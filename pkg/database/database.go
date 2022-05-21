@@ -3,11 +3,12 @@ package database
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/jackc/pgx/v4/pgxpool"
 
 	"github.com/joho/godotenv"
 )
@@ -33,26 +34,26 @@ func DBInit() *Conn {
 	sslMode := os.Getenv("DB_SSL_MODE")
 	schema := os.Getenv("DB_SCHEMA")
 	dbURI := "host=" + host + " port=" + port + " user=" + username + " password=" + password + " dbname=" + dbName + " sslmode=" + sslMode
+	//nolint:gosec // configuration
 	maxOpenConnection, err := strconv.Atoi(os.Getenv("DB_MAX_CONN"))
 	if err != nil {
-		log.Println(err)
-		maxOpenConnection = 5
+		log.Panic("cannot parse DB_MAX_CONN")
 	}
+	//nolint:gocritic // configuration
 	maxIdleTime, err := strconv.Atoi(os.Getenv("DB_MAX_IDLE_TIME"))
 	if err != nil {
-		log.Println(err)
-		maxIdleTime = 5
+		log.Panic("cannot parse DB_MAX_IDLE_TIME")
 	}
+	//nolint:gocritic // configuration
 	maxConnectionLifetime, err := strconv.Atoi(os.Getenv("DB_MAX_LIFETIME"))
 	if err != nil {
-		log.Println(err)
-		maxConnectionLifetime = 2
+		log.Panic("cannot parse DB_MAX_LIFETIME")
 	}
 
+	//nolint:gocritic // configuration
 	healthCheckPeriod, err := strconv.Atoi(os.Getenv("DB_HEALTHCHECK_PERIOD"))
 	if err != nil {
-		log.Println(err)
-		healthCheckPeriod = 2
+		log.Panic("cannot parse DB_HEALTHCHECK_PERIOD")
 	}
 
 	config, err := pgxpool.ParseConfig(dbURI)

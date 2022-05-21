@@ -1,4 +1,4 @@
-package use_case
+package service
 
 import (
 	"context"
@@ -17,12 +17,12 @@ var (
 	name              = "Lg"
 	stock             = 10
 	products          = []*model.Product{
-		&model.Product{
+		{
 			ID:    "1",
 			Name:  &name,
 			Stock: &stock,
 		},
-		&model.Product{
+		{
 			ID:    "2",
 			Name:  &name,
 			Stock: &stock,
