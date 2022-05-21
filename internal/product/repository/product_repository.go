@@ -2,9 +2,9 @@ package repository
 
 import (
 	"context"
+	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/model"
-	"github.com/jinzhu/gorm"
 )
 
 type ProductRepositoryInterface interface {
@@ -13,10 +13,10 @@ type ProductRepositoryInterface interface {
 }
 
 type ProductRepository struct {
-	db *gorm.DB
+	db *database.Conn
 }
 
-func NewProductRepository(db *gorm.DB) ProductRepositoryInterface {
+func NewProductRepository(db *database.Conn) ProductRepositoryInterface {
 	return &ProductRepository{
 		db: db,
 	}
@@ -25,7 +25,7 @@ func NewProductRepository(db *gorm.DB) ProductRepositoryInterface {
 func (pr ProductRepository) GetProducts(ctx context.Context) []*model.Product {
 	var products []*model.Product
 
-	pr.db.Find(&products)
+	//pr.db.Find(&products)
 
 	return products
 }
@@ -33,7 +33,7 @@ func (pr ProductRepository) GetProducts(ctx context.Context) []*model.Product {
 func (pr ProductRepository) GetSingleProduct(ctx context.Context) *model.Product {
 	product := &model.Product{}
 
-	pr.db.First(product)
+	//pr.db.First(product)
 
 	return product
 }

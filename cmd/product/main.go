@@ -7,8 +7,6 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/jinzhu/gorm"
-
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/dataloader"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/generated"
@@ -29,12 +27,12 @@ func main() {
 		port = defaultPort
 	}
 
-	db := database.DBInit()
+	dbConn := database.DBInit()
 	dl := dataloader.NewRetriever()
 
 	var resolver = &graph.Resolver{
-		ProductResolver: productResolverInit(db),
-		BrandResolver:   brandResolverInit(db),
+		ProductResolver: productResolverInit(dbConn),
+		BrandResolver:   brandResolverInit(dbConn),
 		DataLoaders:     dl,
 	}
 
@@ -47,14 +45,14 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
-func productResolverInit(db *gorm.DB) prod_usecase.Product {
+func productResolverInit(db *database.Conn) prod_usecase.Product {
 	productRepo := prod_repo.NewProductRepository(db)
 	return prod_usecase.Product{
 		ProductRepository: productRepo,
 	}
 }
 
-func brandResolverInit(db *gorm.DB) brand_usecase.Brand {
+func brandResolverInit(db *database.Conn) brand_usecase.Brand {
 	brandRepo := brand_repo.NewBrandRepository(db)
 	return brand_usecase.Brand{
 		BrandRepository: brandRepo,

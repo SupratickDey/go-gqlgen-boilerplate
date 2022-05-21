@@ -2,9 +2,9 @@ package repository
 
 import (
 	"context"
+	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/model"
-	"github.com/jinzhu/gorm"
 )
 
 type BrandRepositoryInterface interface {
@@ -12,10 +12,10 @@ type BrandRepositoryInterface interface {
 }
 
 type BrandRepository struct {
-	db *gorm.DB
+	db *database.Conn
 }
 
-func NewBrandRepository(db *gorm.DB) BrandRepositoryInterface {
+func NewBrandRepository(db *database.Conn) BrandRepositoryInterface {
 	return &BrandRepository{
 		db: db,
 	}
@@ -24,7 +24,7 @@ func NewBrandRepository(db *gorm.DB) BrandRepositoryInterface {
 func (br BrandRepository) GetBrands(ctx context.Context) []*model.Brand {
 	var brands []*model.Brand
 
-	br.db.Preload("Products").Find(&brands)
+	//br.db.Preload("Products").Find(&brands)
 
 	return brands
 }
