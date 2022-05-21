@@ -19,7 +19,7 @@ go run github.com/99designs/gqlgen generate
 Run below command to run migration
 
 ```
-migrate -path migration -database "postgres://user:password@host:port/dbname?query" up
+migrate -path migration -database "postgres://user:password@host:port/dbname?sslmode=disable&search_path=public" up
 ```
 
 To create a new migration file
