@@ -1,9 +1,9 @@
 package graph
 
 import (
+	"github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand"
+	"github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/dataloader"
-	"github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand"
-	"github.com/SupratickDey/go-gqlgen-boilerplate/internal/product"
 )
 
 // This file will not be regenerated automatically.

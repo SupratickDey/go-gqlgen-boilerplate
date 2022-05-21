@@ -12,11 +12,11 @@ import (
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/generated"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
-	brand_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand/service"
-	prod_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/service"
+	brand_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand/service"
+	prod_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/service"
 
-	brand_repo "github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand/repository"
-	prod_repo "github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/repository"
+	brand_repo "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand/repository"
+	prod_repo "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/repository"
 )
 
 const defaultPort = "8080"
