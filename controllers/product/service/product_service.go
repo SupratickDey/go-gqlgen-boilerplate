@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
+	"github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/repository"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/model"
-	"github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/repository"
 )
 
 // product service
