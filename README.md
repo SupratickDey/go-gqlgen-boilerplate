@@ -54,3 +54,13 @@ Run unit test with below command in root folder
 ```
 go test -v ./...
 ```
+
+### Run Linter
+
+install golangci on local machine [click here](https://golangci-lint.run/usage/install/#local-installation)
+
+Run golangci linter
+
+```
+golangci-lint run -v -c golangci.yml
+```

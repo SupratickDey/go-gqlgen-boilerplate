@@ -12,8 +12,8 @@ import (
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/generated"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
-	brand_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand/use_case"
-	prod_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/use_case"
+	brand_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand/service"
+	prod_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/service"
 
 	brand_repo "github.com/SupratickDey/go-gqlgen-boilerplate/internal/brand/repository"
 	prod_repo "github.com/SupratickDey/go-gqlgen-boilerplate/internal/product/repository"

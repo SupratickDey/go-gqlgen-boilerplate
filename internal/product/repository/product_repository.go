@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+
 	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/model"
@@ -25,7 +26,7 @@ func NewProductRepository(db *database.Conn) ProductRepositoryInterface {
 func (pr ProductRepository) GetProducts(ctx context.Context) []*model.Product {
 	var products []*model.Product
 
-	//pr.db.Find(&products)
+	// use sql query to find products pr.db.Find(&products)
 
 	return products
 }
@@ -33,7 +34,7 @@ func (pr ProductRepository) GetProducts(ctx context.Context) []*model.Product {
 func (pr ProductRepository) GetSingleProduct(ctx context.Context) *model.Product {
 	product := &model.Product{}
 
-	//pr.db.First(product)
+	// use sql query to find product by id pr.db.First(product)
 
 	return product
 }
