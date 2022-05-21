@@ -12,8 +12,8 @@ import (
 	"github.com/SupratickDey/go-gqlgen-boilerplate/graph/generated"
 	"github.com/SupratickDey/go-gqlgen-boilerplate/pkg/database"
 
-	brand_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand/service"
-	prod_usecase "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/service"
+	brand_service "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand/service"
+	prod_service "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/service"
 
 	brand_repo "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/brand/repository"
 	prod_repo "github.com/SupratickDey/go-gqlgen-boilerplate/controllers/product/repository"
@@ -45,16 +45,16 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
-func productResolverInit(db *database.Conn) prod_usecase.Product {
+func productResolverInit(db *database.Conn) prod_service.Product {
 	productRepo := prod_repo.NewProductRepository(db)
-	return prod_usecase.Product{
+	return prod_service.Product{
 		ProductRepository: productRepo,
 	}
 }
 
-func brandResolverInit(db *database.Conn) brand_usecase.Brand {
+func brandResolverInit(db *database.Conn) brand_service.Brand {
 	brandRepo := brand_repo.NewBrandRepository(db)
-	return brand_usecase.Brand{
+	return brand_service.Brand{
 		BrandRepository: brandRepo,
 	}
 }
