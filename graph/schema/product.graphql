@@ -1,0 +1,11 @@
+type Product {
+    id: ID!
+    name: String
+    stock: Int
+    brand_id: ID
+}
+
+input CreateProductInput {
+    name: String!
+    stock: Int!
+}
